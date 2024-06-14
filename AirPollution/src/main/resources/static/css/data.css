@@ -1,0 +1,320 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+.logo img{
+  height: 50px;
+  width: 170px;
+  margin-left: 20px;
+}
+.header {
+  width: 95.5vw;
+  position: absolute;    
+  display: flex;
+  justify-content: space-between;
+  background-color: rgba(255, 255, 255, 0.2);
+  padding: 10px 20px;
+  z-index: 1;
+}
+.header a {
+  color: #333;
+  text-decoration: none;
+  padding: 15px 15px 10px 10px;
+}
+.header a:hover{
+  color: #397538;
+}
+
+.hover-underline-animation {
+  display: inline-block;
+  position: relative;
+  color: white;
+}
+.hover-underline-animation::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  color: #397538;
+  background-color: #397538;
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+}
+
+.hover-underline-animation:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+.header .select{
+  font-weight: bold;
+  color: #397538;
+}
+.hero {
+  height: 70vh;
+    position: relative;
+    background: url('../assects/mission.jpg') no-repeat center center/cover;
+    color: #333;
+    text-align: center;
+    padding: 100px 20px;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+}
+
+.hero h1 {
+    font-size: 3em;
+    margin: 150px 0px 0px 0px;
+}
+
+.hero p {
+    font-size: 1.2em;
+    margin: 10px 0 0;
+}
+
+.section {
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.section h2 {
+    margin-top: 0;
+}
+
+.footer {
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 20px 0;
+  margin: 60px -20px -60px -30px;
+}
+.footer a {
+  color: white;
+  text-decoration: none;
+  margin: 10px 0px 0px 0px;
+}
+
+/* speedmeter */
+.gauge-wrapper {
+    display: inline-block;
+    width: auto;
+    margin: 0 auto;
+    padding: 20px 15px 15px;
+  }
+  
+  .gauge {
+    background: #e7e7e7;
+    box-shadow: 0 -3px 3px 1px rgba(0, 0, 0, 0.50); /* Simplified shadow */
+    width: 200px;
+    height: 100px;
+    border-radius: 100px 100px 0 0!important;
+    position: relative;
+    overflow: hidden;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden; /* For Safari */
+    will-change: transform;
+  }
+  
+  .gauge.min-scaled {
+    transform: scale(0.5);
+  }
+  
+  .gauge-center {
+    content: '';
+    color: #fff;
+    width: 60%;
+    height: 60%;
+    background: #15222E;
+    border-radius: 100px 100px 0 0!important;
+    position: absolute;
+    box-shadow: 0 -13px 10px -10px rgba(0, 0, 0, 0.28); /* Simplified shadow */
+    right: 21%;
+    bottom: 0;
+    z-index: 10;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden; /* For Safari */
+    will-change: transform;
+  }
+  
+  .gauge-center .label, .gauge-center .number {
+    display: block;
+    width: 100%;
+    text-align: center;
+    border: 0!important;
+  }
+  
+  .gauge-center .label {
+    font-size: 0.75em;
+    opacity: 0.6;
+    margin: 1.1em 0 0.3em 0;
+  }
+  
+  .gauge-center .number {
+    font-size: 1.2em;
+  }
+  
+  .needle {
+    width: 80px;
+    height: 7px;
+    background: #15222E;
+    border-bottom-left-radius: 100%!important;
+    border-bottom-right-radius: 5px!important;
+    border-top-left-radius: 100%!important;
+    border-top-right-radius: 5px!important;
+    position: absolute;
+    bottom: -2px;
+    left: 20px;
+    transform-origin: 100% 4px;
+    transform: rotate(0deg);
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.38); /* Simplified shadow */
+    display: none;
+    z-index: 9;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden; /* For Safari */
+    will-change: transform;
+  }
+  
+  .four.rischio1 .needle {
+    animation: fourspeed1 2s 1 both;
+    animation-delay: 1s;
+    display: block;
+  }
+  
+  .four.rischio2 .needle {
+    animation: fourspeed2 2s 1 both;
+    animation-delay: 1s;
+    display: block;
+  }
+  
+  .four.rischio3 .needle {
+    animation: fourspeed3 2s 1 both;
+    animation-delay: 1s;
+    display: block;
+  }
+  
+  .four.rischio4 .needle {
+    animation: fourspeed4 2s 1 both;
+    animation-delay: 1s;
+    display: block;
+  }
+  
+  .slice-colors {
+    height: 100%;
+  }
+  
+  .slice-colors .st {
+    position: absolute;
+    bottom: 0;
+    width: 0;
+    height: 0;
+    border: 50px solid transparent;
+  }
+  
+  .four .slice-colors .st.slice-item:nth-child(2) {
+    border-top: 50px #f1c40f solid;
+    border-right: 50px #f1c40f solid;
+    background-color: #1eaa59;
+  }
+  
+  .four .slice-colors .st.slice-item:nth-child(4) {
+    left: 50%;
+    border-bottom: 50px #E84C3D solid;
+    border-right: 50px #E84C3D solid;
+    background-color: #e67e22;
+  }
+  
+  @keyframes fourspeed1 {
+    0% {
+      transform: rotate(0);
+    }
+    100% {
+      transform: rotate(16deg);
+    }
+  }
+  
+  @keyframes fourspeed2 {
+    0% {
+      transform: rotate(0);
+    }
+    100% {
+      transform: rotate(65deg);
+    }
+  }
+  
+  @keyframes fourspeed3 {
+    0% {
+      transform: rotate(0);
+    }
+    100% {
+      transform: rotate(115deg);
+    }
+  }
+  
+  @keyframes fourspeed4 {
+    0% {
+      transform: rotate(0);
+    }
+    100% {
+      transform: rotate(164deg);
+    }
+  }
+
+.graph{
+    text-align: center;
+    justify-content: center;    
+    display: flex;
+    flex-direction: row;
+  }
+.graph .speedmeter{
+    display: flex;
+    flex-direction: column;
+    margin: 0px 60px 0px 60px;
+  }
+
+  .title{
+    margin-top: -20px;
+  }
+
+/* Line Graph  */
+.line{
+    margin-top: 30px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.chart{
+    height: 100%;
+    max-height: 500px;
+    width: 100%;
+    max-width: 900px;
+}
+.view{
+  text-align: right;
+  margin-right: 150px;
+}
+.view a{
+  color: #333;
+  text-decoration: none;
+}
+.view a:hover{
+  color: #ff5722;
+  border-bottom: 1px solid #ff5722;
+}

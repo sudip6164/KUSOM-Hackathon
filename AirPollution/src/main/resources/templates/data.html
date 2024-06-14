@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pollution Monitor - Data</title>
+    <link rel="stylesheet" href="css/data.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+</head>
+<body>
+  <div class="header">
+    <div class="logo"><img src="assects/AeriesH.png" alt=""></div>
+    <div class="nav-links">
+        <a class="hover-underline-animation" href="/">Home</a>
+        <a class="hover-underline-animation" href="/about">About</a>
+        <a class="select" href="/data">Data</a>
+        <a class="hover-underline-animation" href="/map">Map</a>
+        <a class="hover-underline-animation" href="/contact">Feedback</a>
+    </div>
+</div>
+
+    <div class="hero data-hero">
+        <div class="hero-content">
+            <h1>Pollution Data Insights</h1>
+            <p>Comprehensive Data to Help You Understand Air Quality</p>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Data Overview</h2>
+        <p>We provide various types of pollution data including Average Pollution rate, key pollutants and it's solutions. </p>
+        
+       <div class="graph">
+         <!-- sppedmeter 1 -->
+         <div class="speedmeter">
+            <div class="gauge-wrapper">
+                <div class="gauge four rischio1">
+                  <div class="slice-colors">
+                    <div class="st slice-item"></div>
+                    <div class="st slice-item"></div>
+                    <div class="st slice-item"></div>
+                    <div class="st slice-item"></div>
+                  </div>
+                  <div class="needle"></div>
+                  <div class="gauge-center">
+                    <div class="label">RISK</div>
+                    <div class="number">LOW</div>
+                  </div>    
+                </div>
+              </div>
+              <div class="title">
+                <h3>Pollution</h3>
+              </div>
+        </div>
+
+          <!-- sppedmeter 2 -->
+        <div class="speedmeter">
+            <div class="gauge-wrapper">
+                <div class="gauge four rischio3">
+                  <div class="slice-colors">
+                    <div class="st slice-item"></div>
+                    <div class="st slice-item"></div>
+                    <div class="st slice-item"></div>
+                    <div class="st slice-item"></div>
+                  </div>
+                  <div class="needle"></div>
+                  <div class="gauge-center">
+                    <div class="label">RISK</div>
+                    <div class="number">HIGH</div>
+                  </div>    
+                </div>
+              </div>
+              <div class="title">
+                <h3>Humidity</h3>
+              </div>
+        </div>
+
+          <!-- sppedmeter 3 -->
+       <div class="speedmeter">
+        <div class="gauge-wrapper">
+            <div class="gauge four rischio4">
+              <div class="slice-colors">
+                <div class="st slice-item"></div>
+                <div class="st slice-item"></div>
+                <div class="st slice-item"></div>
+                <div class="st slice-item"></div>
+              </div>
+              <div class="needle"></div>
+              <div class="gauge-center">
+                <div class="label">RISK</div>
+                <div class="number">EXTREME</div>
+              </div>    
+            </div>
+          </div>
+          <div class="title">
+            <h3>Temperature</h3>
+          </div>
+       </div>
+       </div>
+       <div class="view">
+        <a href="/airdetails">View More >>></a>
+       </div>
+
+       <!-- Line Chart -->
+       <div class="line">
+        <div class="title">
+            <h1>Chart</h1>
+        </div>
+        <div class="chart">
+            <canvas id="myChart" style="width:100%;max-width:900px"></canvas>
+        </div>
+      </div>
+
+
+      <div class="footer">
+        <p>&copy; 2024 Pollution Monitor. All rights reserved.</p>
+        <a href="#">About Us</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Contact</a>
+    </div>
+
+    <script src="js/data.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"> </script>
+</body>
+</html>

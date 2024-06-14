@@ -1,0 +1,132 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    display: flex;
+    flex-direction: column;
+}
+
+.logo img{
+    height: 50px;
+    width: 170px;
+    margin-left: 20px;
+}
+.navbar {
+    width: 95.5vw;
+    position: absolute;    
+    display: flex;
+    justify-content: space-between;
+    background-color: rgba(255, 255, 255, 0.2);
+    padding: 10px 20px;
+}
+.navbar a {
+    color: #333;
+    text-decoration: none;
+    padding: 15px 15px 10px 10px;
+}
+.navbar a:hover{
+    color: #397538;
+}
+
+.hover-underline-animation {
+    display: inline-block;
+    position: relative;
+    color: white;
+}
+.hover-underline-animation::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    color: #397538;
+    background-color: #397538;
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+}
+
+.hover-underline-animation:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+.content {
+    display: flex;
+    flex-direction: row;
+    padding: 40px 100px; 
+    justify-content: space-between;
+}
+.chart-container {
+    width: 400px;
+    margin-right: 20px;
+}
+.details {
+    text-align: justify;
+    max-width: 700px;
+}
+.footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+}
+.footer a {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+}
+.gauge-labels {
+    display: flex;
+    justify-content: space-between;
+    margin-top: -40px;
+    padding: 0 30px;
+}
+.solution {
+    display: none;
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+.solution.active {
+    display: block;
+}
+.topNab{
+    margin-top: 80px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+}
+.topNab ul{
+    display: flex;
+    flex-direction: row;
+    list-style-type: none;
+}
+.topNab ul li a{
+    position: relative;
+    text-decoration: none;
+    color: black;
+    font-size: 16px;
+    margin: 0px 100px 0px 100px;
+}
+
+.topNab ul li a:hover{
+    color: #397538;
+}
+hr {
+    border: 0;
+    border-radius: 5px;
+    clear:both;
+    display:block;
+    width: 87%;               
+    background-color: rgb(152, 145, 145);
+    height: 2px;
+    margin-top: -5px;
+}
+.topNab ul li .select{
+    color: #397538;
+}

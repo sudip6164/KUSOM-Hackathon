@@ -1,0 +1,203 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+.hero {
+    height: 22em;
+    background: url('../assects/city-skyline.jpg') no-repeat center center/cover;
+    color: white;
+    text-align: center;
+    padding: 100px 20px;
+}
+.hero h1 {
+    margin-top: 2em;
+    color: #333;
+    font-size: 3em;
+}
+.hero p {
+    color: #333;
+    font-size: 1.2em;
+}
+.cta-button {
+    background-color: #397538;
+    color: white;
+    padding: 15px 30px;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.logo img{
+    height: 50px;
+    width: 170px;
+    margin-left: 20px;
+}
+.navbar {
+    width: 95.5vw;
+    position: absolute;    
+    display: flex;
+    justify-content: space-between;
+    background-color: rgba(255, 255, 255, 0.2);
+    padding: 10px 20px;
+}
+.navbar a {
+    color: #333;
+    text-decoration: none;
+    padding: 15px 15px 10px 10px;
+}
+.navbar a:hover{
+    color: #397538;
+}
+
+.hover-underline-animation {
+    display: inline-block;
+    position: relative;
+    color: white;
+}
+.hover-underline-animation::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    color: #397538;
+    background-color: #397538;
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+}
+
+.hover-underline-animation:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+.navbar .select{
+    font-weight: bold;
+    color: #397538;
+}
+
+.section {
+    padding: 60px 0px 60px 0px;
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+}
+.section img{
+    margin-left: 70px;
+    height: 400px;
+}
+.info h1{
+    color: #2d6330;
+    margin: 10px 0px 0px 20px;
+}
+.section .info{
+    display: flex;
+    flex-direction: column;
+    margin: 0px 30px 0px 30px;
+}
+.section .info p{
+    margin-left: 30px;
+    font-size: 20px;
+    line-height: 30px;
+    text-align: justify;
+    text-justify: inter-word;
+    width: 100%;
+    max-width: 500px;
+}
+.features {
+    display: flex;
+    justify-content: space-around;
+}
+.feature {
+    width: 23%;
+}
+.footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+}
+.footer a {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+}
+.total{
+    display: flex;
+    background-color: #2d6330;
+    border: 1px solid #397538;
+    box-shadow: 0 3px 2px #397538;
+    text-align: center;
+    justify-content: center;
+    margin: 0px 0px 0px 0px;
+}
+.box{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    margin: 0px 30px 0px 30px;
+    padding: 20px 0px 20px 0px;
+}
+.box.content{
+    display: flex;
+    flex-direction: column;
+}
+.box .content .main{
+    color: white;
+    font-weight: bold !important;
+    font-size: 30px;
+    font-weight: 500;
+}
+.box .content .last{
+    color: white;
+    white-space: nowrap;
+    font-size: 16px;
+    font-weight: 500;
+}
+.box i{
+    color: rgb(206, 204, 204);
+    font-size: 60px;
+    margin-left: 20px;
+}
+.box .vl {
+    border-left: 6px solid gray;
+    border-radius: 20px;
+    height: 50px;
+    left: 50%;
+    margin-left: 60px;
+    top: 0;
+}
+
+.section2 {
+    padding: 0px 20px;
+    text-align: center;
+}
+
+.section2 h1 {
+    color: #2d6330;
+    margin-top: 0;
+}
+
+.feature-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.feature-card {
+    width: 29%;
+    margin: 10px 0;
+    padding: 20px;
+    background: white;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.feature-card img {
+    width: 100%;
+    height: 250px;
+    border-radius: 5px;
+}

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sound Details - Pollution Monitor</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="css/humidity.css">
+</head>
+<body>
+
+    <div class="navbar">
+        <div class="logo"><img src="assects/AeriesH.png" alt=""></div>
+        <div class="nav-links">
+            <a class="hover-underline-animation" href="/">Home</a>
+            <a class="hover-underline-animation" href="/about">About</a>
+            <a class="hover-underline-animation" href="/data">Data</a>
+            <a class="hover-underline-animation" href="/map">Map</a>
+            <a class="hover-underline-animation" href="/contact">Feedback</a>
+        </div>
+    </div>
+
+    <div class="topNab">
+        <ul>
+            <li><a class="hover-underline-animation" href="/airdetails">Air Pollution</a></li>
+            <li><a class="select" href="/humidity">Humidity</a></li>
+            <li><a class="hover-underline-animation" href="/temperature">Temperature</a></li>
+        </ul>
+        <hr>
+    </div>
+
+    <div class="content">
+        <div class="chart-container">
+            <canvas id="soundGauge"></canvas>
+            <div class="gauge-labels">
+                <span>0%</span>
+                <span th:text="${humidity} +'%'"></span>
+                <span>100%</span>
+            </div>
+        </div>
+
+        <div class="details">
+            <h1>Humidity Details</h1>
+            <p>Current Humidity Levels: <span th:text="${humidity} +'%'"></span></p>
+            <h2>Detailed Information on Sound Pollution</h2>
+            <p>Sound pollution, or noise pollution, can have detrimental effects on health and well-being. It can lead to stress, sleep disturbances, and other health issues.</p>
+            <h2>What Contributes to Sound Pollution?</h2>
+            <p>Various sources contribute to sound pollution, including traffic noise, industrial activities, construction sites, and noisy equipment.</p>
+            <h2>Health Impacts of Sound Pollution</h2>
+            <p>Long-term exposure to high levels of noise can result in hearing loss and other auditory problems. It can also contribute to cardiovascular diseases and psychological issues.</p>
+            <div class="solution" id="soundSolutionText">
+                <h2>Solution for Sound Pollution</h2>
+                Implementing noise control measures, using sound barriers, and promoting quieter technologies are essential steps in reducing sound pollution and improving quality of life.
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2024 Pollution Monitor</p>
+       
+    </div>
+
+    <script src="js/humidity.js"></script>
+
+</body>
+</html>
