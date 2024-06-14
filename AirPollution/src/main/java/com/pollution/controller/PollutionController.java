@@ -1,6 +1,7 @@
 package com.pollution.controller;
 
 import java.util.Optional;
+import java.util.OptionalDouble;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,11 +16,20 @@ public class PollutionController {
 	@Autowired
 	private SensorDataRepository sensorDataRepository;
 	
-	@GetMapping("/")
-	public String frontPage()
-	{
-		return "index.html";
-	}
+    @GetMapping("/")
+    public String frontPage(Model model) {
+        OptionalDouble averageAqi = sensorDataRepository.findAll().stream()
+            .mapToDouble(Sensor::getAqi)
+            .average();
+        
+        if (averageAqi.isPresent()) {
+            model.addAttribute("averageAqi", String.format("%.2f", averageAqi.getAsDouble()));
+        } else {
+            model.addAttribute("averageAqi", "N/A");
+        }
+        
+        return "index.html";
+    }
 	
 	@GetMapping("/about")
 	public String aboutPage()

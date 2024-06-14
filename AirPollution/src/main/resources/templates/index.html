@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -30,7 +30,7 @@
     <div class="total">
         <div class="box">
             <div class="content">
-                <span class="main">100%</span>
+                <span class="main" th:text="${averageAqi}"></span>
                 <span class="last">Average Pollution Rate</span>
             </div>
             <i class="fa-solid fa-chart-column"></i>
@@ -46,7 +46,7 @@
         </div>
         <div class="box">
             <div class="content">
-                <span class="main">1000000</span>
+                <span class="main">31,223,438</span>
                 <span class="last">Total Population</span>
             </div>
             <i class="fa-solid fa-user-group"></i>
