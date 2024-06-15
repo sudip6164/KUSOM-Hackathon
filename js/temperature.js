@@ -1,5 +1,5 @@
 var ctx = document.getElementById('temperatureGauge').getContext('2d');
-        var temperatureValue = 36;
+        var temperatureValue = parseFloat(document.getElementById('currentTemperature').textContent);
         document.getElementById('currentTemperature').textContent = `${temperatureValue}°C`;
 
         var temperatureGauge = new Chart(ctx, {

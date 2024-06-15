@@ -1,5 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
+/<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,19 +12,19 @@
     <div class="navbar">
         <div class="logo"><img src="assects/AeriesH.png" alt=""></div>
         <div class="nav-links">
-            <a class="hover-underline-animation" href="index.html">Home</a>
-            <a class="hover-underline-animation" href="about.html">About</a>
-            <a class="hover-underline-animation" href="data.html">Data</a>
-            <a class="hover-underline-animation" href="map.html">Map</a>
-            <a class="hover-underline-animation" href="contact.html">Feedback</a>
+            <a class="hover-underline-animation" href="/">Home</a>
+            <a class="hover-underline-animation" href="/about">About</a>
+            <a class="hover-underline-animation" href="/data">Data</a>
+            <a class="hover-underline-animation" href="/map">Map</a>
+            <a class="hover-underline-animation" href="/contact">Feedback</a>
         </div>
     </div>
 
     <div class="topNab">
         <ul>
-            <li><a class="select" href="#">Air Pollution</a></li>
-            <li><a class="hover-underline-animation" href="humidity.html">Humidity</a></li>
-            <li><a class="hover-underline-animation" href="temperature.html">Temperature</a></li>
+            <li><a class="select" href="/airdetails">Air Pollution</a></li>
+            <li><a class="hover-underline-animation" href="/humidity">Humidity</a></li>
+            <li><a class="hover-underline-animation" href="/temperature">Temperature</a></li>
         </ul>
         <hr>
     </div>
@@ -36,14 +36,15 @@
             <canvas id="pollutionGauge"></canvas>
             <div class="gauge-labels">
                 <span>0</span>
-                <span>50</span>
-                <span>100</span>
+                <span th:text="${aqi}"></span>
+                <span>200</span>
             </div>
         </div>
 
         <div class="details">
             <h1>Air Pollution Details</h1>
-            <p>Current Air Quality:</p>
+            <p>Current Air Quality: <span id="currentAir" th:text="${aqi} +' AQI'"></span></p>
+            <p>Current PPM: <span th:text="${gasPPM} +' PPM'"></span></p>
             <h2>Detailed Information on Air Pollution</h2>
             <p>Air pollution is a major environmental risk to health. Understanding air pollution levels and trends can help us to mitigate the negative health impacts and improve air quality.</p>
             <h2>What Contributes to Air Pollution?</h2>

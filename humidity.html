@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,19 +12,19 @@
     <div class="navbar">
         <div class="logo"><img src="assects/AeriesH.png" alt=""></div>
         <div class="nav-links">
-            <a class="hover-underline-animation" href="index.html">Home</a>
-            <a class="hover-underline-animation" href="about.html">About</a>
-            <a class="hover-underline-animation" href="data.html">Data</a>
-            <a class="hover-underline-animation" href="map.html">Map</a>
-            <a class="hover-underline-animation" href="contact.html">Feedback</a>
+            <a class="hover-underline-animation" href="/">Home</a>
+            <a class="hover-underline-animation" href="/about">About</a>
+            <a class="hover-underline-animation" href="/data">Data</a>
+            <a class="hover-underline-animation" href="/map">Map</a>
+            <a class="hover-underline-animation" href="/contact">Feedback</a>
         </div>
     </div>
 
     <div class="topNab">
         <ul>
-            <li><a class="hover-underline-animation" href="airdetails.html">Air Pollution</a></li>
-            <li><a class="select" href="#">Humidity</a></li>
-            <li><a class="hover-underline-animation" href="temperature.html">Temperature</a></li>
+            <li><a class="hover-underline-animation" href="/airdetails">Air Pollution</a></li>
+            <li><a class="select" href="/humidity">Humidity</a></li>
+            <li><a class="hover-underline-animation" href="/temperature">Temperature</a></li>
         </ul>
         <hr>
     </div>
@@ -33,15 +33,15 @@
         <div class="chart-container">
             <canvas id="soundGauge"></canvas>
             <div class="gauge-labels">
-                <span>0</span>
-                <span>50</span>
-                <span>100</span>
+                <span>0%</span>
+                <span th:text="${humidity} +'%'"></span>
+                <span>100%</span>
             </div>
         </div>
 
         <div class="details">
-            <h1>Sound Details</h1>
-            <p>Current Sound Levels:</p>
+            <h1>Humidity Details</h1>
+            <p>Current Humidity Levels: <span id="currentHumidity" th:text="${humidity} +'%'"></span></p>
             <h2>Detailed Information on Sound Pollution</h2>
             <p>Sound pollution, or noise pollution, can have detrimental effects on health and well-being. It can lead to stress, sleep disturbances, and other health issues.</p>
             <h2>What Contributes to Sound Pollution?</h2>
@@ -60,7 +60,7 @@
        
     </div>
 
-    <script src="js/humidity.js"></script>
+    <script src="/js/humidity.js"></script>
 
 </body>
 </html>

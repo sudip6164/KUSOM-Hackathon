@@ -1,5 +1,5 @@
 var ctx = document.getElementById('soundGauge').getContext('2d');
-        var soundValue = 40; // Set the sound pollution value here (0 to 100)
+        var soundValue = parseFloat(document.getElementById('currentHumidity').textContent); // Set the sound pollution value here (0 to 100)
 
         var soundGauge = new Chart(ctx, {
             type: 'doughnut',

@@ -1,5 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
+/<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,19 +12,19 @@
     <div class="navbar">
         <div class="logo"><img src="assects/AeriesH.png" alt=""></div>
         <div class="nav-links">
-            <a class="hover-underline-animation" href="index.html">Home</a>
-            <a class="hover-underline-animation" href="about.html">About</a>
-            <a class="hover-underline-animation" href="data.html">Data</a>
-            <a class="hover-underline-animation" href="map.html">Map</a>
-            <a class="hover-underline-animation" href="contact.html">Feedback</a>
+            <a class="hover-underline-animation" href="/">Home</a>
+            <a class="hover-underline-animation" href="/about">About</a>
+            <a class="hover-underline-animation" href="/data">Data</a>
+            <a class="hover-underline-animation" href="/map">Map</a>
+            <a class="hover-underline-animation" href="/contact">Feedback</a>
         </div>
     </div>
 
     <div class="topNab">
         <ul>
-            <li><a class="hover-underline-animation" href="airdetails.html">Air Pollution</a></li>
-            <li><a class="hover-underline-animation" href="humidity.html">Humidity</a></li>
-            <li><a class="select" href="#">Temperature</a></li>
+            <li><a class="hover-underline-animation" href="/airdetails">Air Pollution</a></li>
+            <li><a class="hover-underline-animation" href="/humidity">Humidity</a></li>
+            <li><a class="select" href="/temperature">Temperature</a></li>
         </ul>
         <hr>
     </div>
@@ -34,14 +34,14 @@
             <canvas id="temperatureGauge"></canvas>
             <div class="gauge-labels">
                 <span>0°C</span>
-                <span>50°C</span>
+                <span th:text="${temperature} +'°C'"></span>
                 <span>100°C</span>
             </div>
         </div>
 
         <div class="details">
             <h1>Temperature Details</h1>
-            <p>Current Temperature: <span id="currentTemperature">30°C</span></p>
+            <p>Current Temperature: <span id="currentTemperature" th:text="${temperature}"></span></p>
             <h2>Detailed Information on Temperature Monitoring</h2>
             <p>Monitoring temperature is crucial for understanding environmental conditions and climate patterns. Temperature variations can impact ecosystems, agriculture, and human health.</p>
             <h2>Factors Affecting Temperature</h2>

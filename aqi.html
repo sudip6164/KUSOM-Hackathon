@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Temperature Details - Pollution Monitor</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .navbar {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        background-color: #333;
+        padding: 20px;
+        color: white;
+      }
+      .navbar a {
+        color: white;
+        text-decoration: none;
+        padding: 10px;
+      }
+      .navbar a:hover {
+        color: #ff5722;
+      }
+      .hover-underline-animation {
+        display: inline-block;
+        position: relative;
+        color: white;
+      }
+      .hover-underline-animation::after {
+        content: "";
+        position: absolute;
+        width: 100%;
+        transform: scaleX(0);
+        height: 2px;
+        bottom: 0;
+        left: 0;
+        background-color: #ff5722;
+        transform-origin: bottom right;
+        transition: transform 0.25s ease-out;
+      }
+      .hover-underline-animation:hover::after {
+        transform: scaleX(1);
+        transform-origin: bottom left;
+      }
+      .topNab {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        padding: 20px;
+        background-color: #eee;
+      }
+      .topNab ul {
+        display: flex;
+        flex-direction: row;
+        list-style-type: none;
+        padding: 0;
+      }
+      .topNab ul li {
+        margin: 0 20px;
+      }
+      .topNab ul li a {
+        text-decoration: none;
+        color: black;
+        font-size: 16px;
+      }
+      .topNab ul li a:hover {
+        color: #ff5722;
+      }
+      .topNab ul li .select {
+        color: #ff5722;
+      }
+      hr {
+        border: 0;
+        border-radius: 5px;
+        width: 87%;
+        background-color: rgb(152, 145, 145);
+        height: 2px;
+        margin-top: -5px;
+      }
+      .content {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+      }
+      .chart-container {
+        width: 100%;
+        max-width: 400px;
+        margin: 20px 0;
+      }
+      .gauge-labels {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        max-width: 400px;
+        margin-top: -20px;
+      }
+      .details {
+        width: 100%;
+        max-width: 700px;
+        text-align: justify;
+        margin: 20px 0;
+      }
+      .toast-container {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      .toast {
+        display: none;
+        padding: 15px;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        justify-content: space-between;
+        align-items: center;
+      }
+      .toast.active {
+        display: flex;
+      }
+      .good {
+        background-color: #d4edda;
+        color: #155724;
+      }
+      .moderate {
+        background-color: #fff3cd;
+        color: #856404;
+      }
+      .poor {
+        background-color: #f8d7da;
+        color: #721c24;
+      }
+      .unhealthy {
+        background-color: #f5c6cb;
+        color: #491217;
+      }
+      .hazardous {
+        background-color: #d9534f;
+        color: white;
+      }
+      .footer {
+        width: 100%;
+        background-color: #333;
+        color: white;
+        text-align: center;
+        padding: 20px 0;
+      }
+      .footer a {
+        color: white;
+        text-decoration: none;
+        margin: 0 10px;
+      }
+      @media (max-width: 768px) {
+        .navbar,
+        .topNab ul,
+        .content {
+          flex-direction: column;
+          align-items: center;
+        }
+        .topNab ul li {
+          margin: 10px 0;
+        }
+        .content {
+          padding: 10px;
+        }
+        .chart-container {
+          width: 90%;
+        }
+        .details {
+          width: 90%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="navbar">
+      <div class="logo">Pollution Monitor</div>
+      <div class="nav-links">
+        <a class="hover-underline-animation" href="index.html">Home</a>
+        <a class="hover-underline-animation" href="dashboard.html">Dashboard</a>
+        <a class="hover-underline-animation" href="about.html">About</a>
+        <a class="hover-underline-animation" href="features.html">Features</a>
+        <a class="hover-underline-animation" href="data.html">Data</a>
+        <a class="hover-underline-animation" href="contact.html">Contact</a>
+      </div>
+    </div>
+    <div class="topNab">
+      <ul>
+        <li>
+          <a class="hover-underline-animation" href="airdetails.html">Air Pollution</a>
+        </li>
+        <li><a href="sounddetails.html">Sound Pollution</a></li>
+        <li>
+          <a class="hover-underline-animation select" href="#">Temperature</a>
+        </li>
+      </ul>
+      <hr>
+    </div>
+    <div class="content">
+      <div class="chart-container">
+        <canvas id="temperatureGauge"></canvas>
+        <div class="gauge-labels">
+          <span>0°C</span>
+          <span>50°C</span>
+          <span>100°C</span>
+        </div>
+      </div>
+      <div class="details">
+        <h1>Current Air Quality Index Details</h1>
+        <p>AQI: <span id="currentAqi">30</span></p>
+        <p>Ppm: <span id="currentPpm">30</span></p>
+        <!-- Added temperatureSolutionText for animation -->
+        <div id="temperatureSolutionText" class="toast"></div>
+        <div class="toast-container">
+          <div class="toast good">
+            <span>0 - 50</span>
+            <span>Good</span>
+            <span>Typical level found in occupied spaces with good air exchange</span>
+          </div>
+          <div class="toast moderate">
+            <span>51 - 100</span>
+            <span>Moderate</span>
+            <span>Complaints of drowsiness and poor air</span>
+          </div>
+          <div class="toast poor">
+            <span>101 - 150</span>
+            <span>Poor</span>
+            <span>Headaches, sleepiness, and stagnant, stale, stuffy air</span>
+          </div>
+          <div class="toast unhealthy">
+            <span>151 - 200</span>
+            <span>Unhealthy</span>
+            <span>Significant health effects may be noted; requires ventilation</span>
+          </div>
+          <div class="toast hazardous">
+            <span>201+</span>
+            <span>Hazardous</span>
+            <span>Immediate danger to life and health</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer">
+      <p>&copy; 2024 Pollution Monitor</p>
+    </div>
+    <script>
+      var ctx = document.getElementById('temperatureGauge').getContext('2d');
+      var temperatureValue = 30;
+      var initialRender = false; // Set initialRender to false
+      
+      var temperatureGauge = new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+          labels: ['Temperature Level'],
+          datasets: [{
+            data: [temperatureValue, 100 - temperatureValue],
+            backgroundColor: getTemperatureColor(temperatureValue),
+            borderWidth: 0
+          }]
+        },
+        options: {
+          responsive: true,
+          cutout: '80%',
+          rotation: -90,
+          circumference: 180,
+          plugins: {
+            tooltip: {
+              enabled: false
+            }
+          },
+          animation: {
+            onComplete: function(animation) {
+              // Check if it's initial render, if so, do not trigger animation
+              if (initialRender) {
+                initialRender = false;
+                return;
+              }
+              var temperatureSolutionText = document.getElementById('temperatureSolutionText');
+              if (temperatureValue >= 40) {
+                temperatureSolutionText.textContent = "Temperature is high!";
+              } else {
+                temperatureSolutionText.textContent = "";
+              }
+            }
+          }
+        }
+      });
+      
+      // Update the AQI value
+      var currentAqi = 300; // Change this value as needed
+      document.getElementById('currentAqi').textContent = currentAqi;
+      document.getElementById('currentPpm').textContent = currentAqi; // Assuming Ppm is the same as AQI for now
+      
+      // Call showToast function again to update the toast
+      showToast(currentAqi);
+      
+      function getTemperatureColor(value) {
+        var hue = (1 - value / 60) * 120;
+        return [`hsl(${hue}, 100%, 50%)`, '#d3d3d3'];
+      }
+      
+      function showToast(aqi) {
+        var toasts = document.querySelectorAll('.toast');
+        toasts.forEach(function(toast) {
+          toast.classList.remove('active');
+        });
+        if (aqi <= 50) {
+          document.querySelector('.toast.good').classList.add('active');
+        } else if (aqi <= 100) {
+          document.querySelector('.toast.moderate').classList.add('active');
+        } else if (aqi <= 150) {
+          document.querySelector('.toast.poor').classList.add('active');
+        } else if (aqi <= 200) {
+          document.querySelector('.toast.unhealthy').classList.add('active');
+        } else {
+          document.querySelector('.toast.hazardous').classList.add('active');
+        }
+      }
+    </script>
+  </body>
+  </html>
