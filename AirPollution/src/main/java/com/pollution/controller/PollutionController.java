@@ -82,4 +82,5 @@ public class PollutionController {
         }
         return "temperature.html";
     }
+	
 }
