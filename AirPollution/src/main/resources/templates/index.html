@@ -27,37 +27,41 @@
     </div>
 
     <!-- Main Box -->
-    <div class="total">
-        <div class="box">
-            <div class="content">
-                <span class="main" th:text="${averageAqi}"></span>
-                <span class="last">Average Pollution Rate</span>
-            </div>
-            <i class="fa-solid fa-chart-column"></i>
-            <div class="vl"></div>
+    <div class="card">
+        <div class="image">
+            <img src="/assects/stats-img.svg" alt="">
         </div>
-        <div class="box">
-            <div class="content">
-                <span class="main">2</span>
-                <span class="last">No. of sensors</span>
+        <div class="first">
+            <div class="one">
+                <i class="fa-solid fa-chart-column" style="font-size: 50px; color: #2d6330;"></i>
+                <div class="content">
+                    <span class="main" id="counter"> <span class="main" th:text="${averageAqi}"></span></span>
+                    <span class="last">Average Quality Index</span>
+                </div>
             </div>
-            <i class="fa-solid fa-microchip"></i>
-            <div class="vl"></div>
-        </div>
-        <div class="box">
-            <div class="content">
-                <span class="main">31,223,438</span>
-                <span class="last">Total Population</span>
+            <div class="two">
+                <i class="fa-solid fa-microchip" style="font-size: 50px; color: #2d6330;"></i>
+                <div class="content">
+                    <span class="main" id="counter1">2</span>
+                    <span class="last">No. of sensors</span>
+                </div>
             </div>
-            <i class="fa-solid fa-user-group"></i>
-            <div class="vl"></div>
         </div>
-        <div class="box">
-           <div class="content">
-                <span class="main">100%</span>
-                <span class="last">Success</span>
-           </div>
-           <i class="fa-solid fa-thumbs-up"></i>
+        <div class="second">
+            <div class="one">
+                <i class="fa-solid fa-user-group" style="font-size: 50px; color: #2d6330;"></i>
+                <div class="content">
+                    <span class="main" id="counter2">31,223,438</span>
+                    <span class="last">Total Population</span>
+                </div>
+            </div>
+            <div class="two">
+                <i class="fa-solid fa-thumbs-up" style="font-size: 50px; color: #2d6330;"></i>
+                <div class="content">
+                    <span class="main" id="counter3">100</span>
+                    <span class="last">Success</span>
+               </div>
+            </div>
         </div>
     </div>
 
@@ -105,6 +109,7 @@
 
     <!-- fontawesome -->
     <script src="https://kit.fontawesome.com/9dd5e210d1.js" crossorigin="anonymous"></script>
+    <script src="/js/card.js"></script>
 
 </body>
 </html>

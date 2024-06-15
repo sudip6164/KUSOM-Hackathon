@@ -128,5 +128,6 @@ hr {
     margin-top: -5px;
 }
 .topNab ul li .select{
+	font-weight: bold;
     color: #397538;
 }

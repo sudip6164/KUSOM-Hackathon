@@ -1,4 +1,4 @@
-/<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
@@ -9,6 +9,50 @@
 </head>
 <body>
 
+<style>
+	
+.aqi-table {
+width: 100%;
+border-collapse: collapse;
+margin: 20px 0;
+box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.aqi-table th, .aqi-table td {
+padding: 15px;
+text-align: left;
+border-bottom: 1px solid #ddd;
+}
+
+.aqi-table th {
+background-color: #f2f2f2;
+}
+
+.good {
+background-color: #d4edda;
+color: #155724;
+}
+
+.moderate {
+background-color: #fff3cd;
+color: #856404;
+}
+
+.poor {
+background-color: #f8d7da;
+color: #721c24;
+}
+
+.unhealthy {
+background-color: #f5c6cb;
+color: #491217;
+}
+
+.hazardous {
+background-color: #d9534f;
+color: white;
+}
+</style>
     <div class="navbar">
         <div class="logo"><img src="assects/AeriesH.png" alt=""></div>
         <div class="nav-links">
@@ -45,17 +89,59 @@
             <h1>Air Pollution Details</h1>
             <p>Current Air Quality: <span id="currentAir" th:text="${aqi} +' AQI'"></span></p>
             <p>Current PPM: <span th:text="${gasPPM} +' PPM'"></span></p>
-            <h2>Detailed Information on Air Pollution</h2>
+            <!-- <h2>Detailed Information on Air Pollution</h2>
             <p>Air pollution is a major environmental risk to health. Understanding air pollution levels and trends can help us to mitigate the negative health impacts and improve air quality.</p>
             <h2>What Contributes to Air Pollution?</h2>
             <p>Various factors contribute to air pollution, including industrial emissions, vehicle exhaust, and natural sources such as wildfires and volcanic activity. The main pollutants include particulate matter (PM2.5 and PM10), nitrogen dioxide (NO2), sulfur dioxide (SO2), carbon monoxide (CO), and ozone (O3).</p>
             <h2>Health Impacts of Air Pollution</h2>
             <p>Exposure to air pollution can lead to respiratory and cardiovascular diseases, adverse pregnancy outcomes, and even premature death. Long-term exposure can result in chronic health issues and reduced life expectancy.</p>
             <div class="solution" id="solutionText">
-            <h2>Solution for AIR Pollution</h2>
+             -->
+             <h2>Solution for AIR Pollution</h2>
     Implementing stricter emission controls, promoting cleaner energy sources, and enhancing public awareness are essential steps in reducing air pollution and improving air quality.
-            </div>
+            
+                    <div class="container">
+            <h1>Air Quality Index</h1>
+            <table class="aqi-table">
+                <thead>
+                    <tr>
+                        <th>Custom AQI Level</th>
+                        <th>Air Quality</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="good">
+                        <td>0 - 50</td>
+                        <td>Good</td>
+                        <td>Typical level found in occupied spaces with good air exchange</td>
+                    </tr>
+                    <tr class="moderate">
+                        <td>51 - 100</td>
+                        <td>Moderate</td>
+                        <td>Complaints of drowsiness and poor air</td>
+                    </tr>
+                    <tr class="poor">
+                        <td>101 - 150</td>
+                        <td>Poor</td>
+                        <td>Headaches, sleepiness, and stagnant, stale, stuffy air</td>
+                    </tr>
+                    <tr class="unhealthy">
+                        <td>151 - 200</td>
+                        <td>Unhealthy</td>
+                        <td>Significant health effects may be noted; requires ventilation</td>
+                    </tr>
+                    <tr class="hazardous">
+                        <td>201+</td>
+                        <td>Hazardous</td>
+                        <td>Immediate danger to life and health</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
+        </div>
+        
+
     </div>
 
     <div class="footer">

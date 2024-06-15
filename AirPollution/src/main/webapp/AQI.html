@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temperature Details - Pollution Monitor</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<style>
+    body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    display: flex;
+    flex-direction: column;
+}
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    background-color: #333;
+    padding: 30px 40px;
+    color: white;
+}
+.navbar a {
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+}
+.navbar a:hover{
+    color: #ff5722;
+}
+.hover-underline-animation {
+    display: inline-block;
+    position: relative;
+    color: white;
+}
+.hover-underline-animation::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    color: #ff5722;
+    background-color: #ff5722;
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+}
+.hover-underline-animation:hover::after {
+transform: scaleX(1);
+transform-origin: bottom left;
+}
+.content {
+display: flex;
+flex-direction: row;
+padding: 40px 100px;
+justify-content: space-between;
+}
+.chart-container {
+width: 400px;
+margin-right: 20px;
+}
+.details {
+text-align: justify;
+max-width: 700px;
+}
+.footer {
+background-color: #333;
+color: white;
+text-align: center;
+padding: 20px 0;
+}
+.footer a {
+color: white;
+text-decoration: none;
+margin: 0 10px;
+}
+.gauge-labels {
+display: flex;
+justify-content: space-between;
+margin-top: -40px;
+padding: 0 30px;
+}
+.solution {
+display: none;
+margin-top: 20px;
+padding: 10px;
+background-color: #fff;
+border: 1px solid #ccc;
+border-radius: 5px;
+}
+.solution.active {
+display: block;
+}
+.topNab{
+align-items: center;
+justify-content: center;
+display: flex;
+flex-direction: column;
+}
+.topNab ul{
+display: flex;
+flex-direction: row;
+list-style-type: none;
+}
+.topNab ul li a{
+position: relative;
+text-decoration: none;
+color: black;
+font-size: 16px;
+margin: 0px 100px 0px 100px;
+}
+
+.topNab ul li a
+hr {
+border: 0;
+border-radius: 5px;
+clear
+;
+display
+;
+width: 87%;
+background-color: rgb(152, 145, 145);
+height: 2px;
+margin-top: -5px;
+}
+.topNab ul li .select{
+color: #ff5722;
+}
+
+.aqi-table {
+width: 100%;
+border-collapse: collapse;
+margin: 20px 0;
+box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.aqi-table th, .aqi-table td {
+padding: 15px;
+text-align: left;
+border-bottom: 1px solid #ddd;
+}
+
+.aqi-table th {
+background-color: #f2f2f2;
+}
+
+.good {
+background-color: #d4edda;
+color: #155724;
+}
+
+.moderate {
+background-color: #fff3cd;
+color: #856404;
+}
+
+.poor {
+background-color: #f8d7da;
+color: #721c24;
+}
+
+.unhealthy {
+background-color: #f5c6cb;
+color: #491217;
+}
+
+.hazardous {
+background-color: #d9534f;
+color: white;
+}
+
+</style>
+<body>
+php
+Copy code
+<div class="navbar">
+    <div class="logo">Pollution Monitor</div>
+    <div class="nav-links">
+        <a class="hover-underline-animation" href="index.html">Home</a>
+        <a class="hover-underline-animation" href="dashboard.html">Dashboard</a>
+        <a class="hover-underline-animation" href="about.html">About</a>
+        <a class="hover-underline-animation" href="features.html">Features</a>
+        <a class="hover-underline-animation" href="data.html">Data</a>
+        <a class="hover-underline-animation" href="contact.html">Contact</a>
+    </div>
+</div>
+
+<div class="topNab">
+    <ul>
+        <li><a class="hover-underline-animation" href="airdetails.html">Air Pollution</a></li>
+        <li><a href="sounddetails.html">Sound Pollution</a></li>
+        <li><a class="hover-underline-animation" class="select" href="#">Temperature</a></li>
+    </ul>
+    <hr>
+</div>
+
+<div class="content">
+    <div class="chart-container">
+        <canvas id="temperatureGauge"></canvas>
+        <div class="gauge-labels">
+            <span>0°C</span>
+            <span>50°C</span>
+            <span>100°C</span>
+        </div>
+    </div>
+
+    <div class="details">
+        <h1>Current Air Quality Index Details</h1>
+        <p>AQI: <span id="currentTemperature">30</span></p>
+        <p>Ppm: <span id="currentTemperature">30</span></p>
+        <div class="container">
+            <h1>Air Quality Index</h1>
+            <table class="aqi-table">
+                <thead>
+                    <tr>
+                        <th>Custom AQI Level</th>
+                        <th>Air Quality</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="good">
+                        <td>0 - 50</td>
+                        <td>Good</td>
+                        <td>Typical level found in occupied spaces with good air exchange</td>
+                    </tr>
+                    <tr class="moderate">
+                        <td>51 - 100</td>
+                        <td>Moderate</td>
+                        <td>Complaints of drowsiness and poor air</td>
+                    </tr>
+                    <tr class="poor">
+                        <td>101 - 150</td>
+                        <td>Poor</td>
+                        <td>Headaches, sleepiness, and stagnant, stale, stuffy air</td>
+                    </tr>
+                    <tr class="unhealthy">
+                        <td>151 - 200</td>
+                        <td>Unhealthy</td>
+                        <td>Significant health effects may be noted; requires ventilation</td>
+                    </tr>
+                    <tr class="hazardous">
+                        <td>201+</td>
+                        <td>Hazardous</td>
+                        <td>Immediate danger to life and health</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+          </div>
+    </div>
+</div>
+
+<div class="footer">
+    <p>&copy; 2024 Pollution Monitor</p>
+</div>
+
+<script>
+    var ctx = document.getElementById('temperatureGauge').getContext('2d');
+    var temperatureValue = 30;
+    document.getElementById('currentTemperature').textContent =/* ${temperatureValue}*/;
+
+    var temperatureGauge = new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+            labels: ['Temperature Level'],
+            datasets: [{
+                data: [temperatureValue, 100 - temperatureValue],
+                backgroundColor: getTemperatureColor(temperatureValue),
+                borderWidth: 0
+            }]
+        },
+        options: {
+            responsive: true,
+            cutout: '80%',
+            rotation: -90,
+            circumference: 180,
+            plugins: {
+                tooltip: {
+                    enabled: false
+                }
+            },
+            animation: {
+                onComplete: function(animation) {
+                    var temperatureSolutionText = document.getElementById('temperatureSolutionText');
+                    if (temperatureValue >= 40) {
+                        temperatureSolutionText.classList.add('active');
+                    } else {
+                        temperatureSolutionText.classList.remove('active');
+                    }
+                }
+            }
+        }
+    });
+
+    function getTemperatureColor(value) {
+        var hue = (1 - value / 60) * 120;
+        return [`hsl(${hue}, 100%, 50%)`, '#d3d3d3'];
+    }
+</script>
+</body>
+</html>

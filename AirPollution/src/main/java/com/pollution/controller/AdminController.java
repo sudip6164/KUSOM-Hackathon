@@ -27,6 +27,11 @@ public class AdminController {
 	{
 		return "login.html";
 	}
+	@GetMapping("/AQI")
+	public String AQI()
+	{
+		return "AQI.html";
+	}
 	
 	@GetMapping("/admin")
 	public String adminPage()

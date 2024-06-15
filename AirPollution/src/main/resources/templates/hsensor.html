@@ -12,10 +12,10 @@
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
-      .content {
+.content {
             display: flex;
             flex-direction: row;
-            padding: 40px 100px; 
+            padding: 40px 100px;
             justify-content: space-between;
             align-items: flex-start; /* Align items flex-start for better alignment */
         }
@@ -37,6 +37,7 @@
             color: #333; /* Adjust color for better visibility */
         }
         .topNab{
+        margin-top: 30px;
     align-items: center;
     justify-content: center;
     display: flex;
@@ -54,9 +55,34 @@
     font-size: 16px;
     margin: 0px 100px 0px 100px;
 }
-
+ 
 .topNab ul li a:hover{
-    color: #ff5722;
+    color: #397538;
+}
+ 
+ 
+.hover-underline-animation {
+    display: inline-block;
+    position: relative;
+    color: white;
+}
+.hover-underline-animation::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    color: #397538;
+    background-color: #397538;
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+}
+ 
+.hover-underline-animation:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
 }
 hr {
     border: 0;
@@ -69,22 +95,9 @@ hr {
     margin-top: -5px;
 }
 .topNab ul li .select{
-    color: #ff5722;
-}
-
-.content {
-    display: flex;
-    flex-direction: row;
-    padding: 40px 40px; 
-    justify-content: space-between;
-}
-.chart-container {
-    width: 400px;
-    margin-right: 20px;
-}
-.details {
-    text-align: justify;
-    max-width: 600px;
+	background-color: white !important;
+	font-weight: bold;
+    color: #397538 !important;
 }
     </style>
 </head>
@@ -173,12 +186,12 @@ hr {
                         <p id="humidityq">Humidity: <span th:text ="${humidity} +'%'">></span></p>
                         <table></table>
                         <!-- Additional details for each location -->
-                        <h2>Detailed Information on Sound Pollution</h2>
-            <p>Sound pollution, or noise pollution, can have detrimental effects on health and well-being. It can lead to stress, sleep disturbances, and other health issues.</p>
-            <h2>What Contributes to Sound Pollution?</h2>
-            <p>Various sources contribute to sound pollution, including traffic noise, industrial activities, construction sites, and noisy equipment.</p>
-            <h2>Health Impacts of Sound Pollution</h2>
-            <p>Long-term exposure to high levels of noise can result in hearing loss and other auditory problems. It can also contribute to cardiovascular diseases and psychological issues.</p>
+                        <h2>Detailed Information on Humidity</h2>
+            <p>Humidity refers to the concentration of water vapor present in the air. It can significantly affect comfort, health, and even the structural integrity of buildings.</p>
+            <h2>What Contributes to Humidity?</h2>
+            <p>Various factors contribute to humidity levels, including weather conditions, geographic location, and indoor activities such as cooking, bathing, and using humidifiers.</p>
+            <h2>Health Impacts of Humidity</h2>
+            <p>High humidity levels can promote the growth of mold, mildew, and dust mites, which can exacerbate allergies and respiratory conditions. Conversely, low humidity can cause dry skin, irritated respiratory tracts, and increase the spread of airborne viruses.</p>
             
                     </div>
                 </div>

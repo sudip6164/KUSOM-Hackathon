@@ -76,42 +76,49 @@
                 
                     <div class="container-fluid px-4">
                         <h1 class="mt-4">Dashboard</h1>
-                          <h1 class="display-4">Welcome, Admin</h1>
-    <div class="row">
-        <div class="col-sm-3 pt-3" >
-            <div class="card" style="background-color:white;">
-                <div class="card-body">
-                    <h4 class="card-title">Status</h4>
-                    <p class="card-text">Check all the Pollution Status.</p>
-                    <a href="#" th:href="@{/admin/asensor}" class="card-link btn btn-primary">Check</a>
-
+                          <h1 class="display-6">Welcome, Admin</h1>
+                          </div>
+                </main>
+   
+   <div class="card">
+        <div class="image">
+            <img src="/assects/stats-img.svg" alt="">
+        </div>
+        <div class="first">
+            <div class="one">
+                <i class="fa-solid fa-chart-column" style="font-size: 50px; color: #2d6330;"></i>
+                <div class="content">
+                    <span class="main" id="counter">100</span>
+                    <span class="last">Average Pollution Rate</span>
+                </div>
+            </div>
+            <div class="two">
+                <i class="fa-solid fa-microchip" style="font-size: 50px; color: #2d6330;"></i>
+                <div class="content">
+                    <span class="main" id="counter1">2</span>
+                    <span class="last">No. of sensors</span>
                 </div>
             </div>
         </div>
-        <div class="col-sm-3 pt-3" >
-            <div class="card" style="background-color:white;">
-                <div class="card-body">
-                    <h4 class="card-title">Set New Location</h4>
-                    <p class="card-text">Set new location with sensors.</p>
-                    <a href="#" th:href="@{/admin/amap}" class="card-link btn btn-primary">Set</a>
-
+        <div class="second">
+            <div class="one">
+                <i class="fa-solid fa-user-group" style="font-size: 50px; color: #2d6330;"></i>
+                <div class="content">
+                    <span class="main" id="counter2">31,223,438</span>
+                    <span class="last">Total Population</span>
                 </div>
             </div>
-        </div>
-  <div class="col-sm-3 pt-3" >
-            <div class="card" style="background-color:white;">
-                <div class="card-body">
-                    <h4 class="card-title">Feedback List</h4>
-                    <p class="card-text">View all the feedback list here.</p>
-                    <a href="#" th:href="@{/admin/afeed}" class="card-link btn btn-primary">View</a>
-
-                </div>
+            <div class="two">
+                <i class="fa-solid fa-thumbs-up" style="font-size: 50px; color: #2d6330;"></i>
+                <div class="content">
+                    <span class="main" id="counter3">100</span>
+                    <span class="last">Success</span>
+               </div>
             </div>
         </div>
     </div>
-         
-                    </div>
-                </main>
+
+                    
                 <footer class="py-4 bg-light mt-auto">
                     <div class="container-fluid px-4">
                         <div class="d-flex align-items-center justify-content-between small">
@@ -133,6 +140,10 @@
 <script th:src="@{/assets/demo/chart-bar-demo.js}"></script>
 <script th:src="@{https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js}" crossorigin="anonymous"></script>
 <script th:src="@{/js/datatables-simple-demo.js}"></script>
+    <!-- fontawesome -->
+    <script src="https://kit.fontawesome.com/9dd5e210d1.js" crossorigin="anonymous"></script>
+    <script src="/js/card.js"></script>
+         
 
     </body>
 </html>
