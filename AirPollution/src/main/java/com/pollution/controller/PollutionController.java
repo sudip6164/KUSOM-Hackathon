@@ -49,12 +49,6 @@ public class PollutionController {
 		return "map.html";
 	}
 	
-	@GetMapping("/contact")
-	public String contactPage()
-	{
-		return "contact.html";
-	}
-	
 	@GetMapping("/airdetails")
     public String airdetailsPage(Model model) {
         Optional<Sensor> latestSensorData = sensorDataRepository.findTopByOrderByCreatedAtDesc();
