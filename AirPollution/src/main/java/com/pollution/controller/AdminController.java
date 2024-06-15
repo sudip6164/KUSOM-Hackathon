@@ -6,8 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import com.pollution.model.Sensor;
+import com.pollution.model.admin;
 import com.pollution.repo.ContactRepository;
 import com.pollution.repo.SensorDataRepository;
 
@@ -19,11 +22,29 @@ public class AdminController {
 	@Autowired
 	private ContactRepository contactRepository;
 	
+	@GetMapping("/a")
+	public String login()
+	{
+		return "login.html";
+	}
+	
 	@GetMapping("/admin")
 	public String adminPage()
 	{
 		return "admindash.html";
 	}
+	
+	@PostMapping("/adminlogin")
+	public String login(@ModelAttribute admin a)
+	{
+		if(a.getUsername().equals("admin")&& a.getPassword().equals("admin"))
+		{
+			return "admindash.html";
+		}
+		return"login.html";
+	}
+	
+	
 	@GetMapping("/admin/amap")
     public String amapPage() {
         return "amap.html";

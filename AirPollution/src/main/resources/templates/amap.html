@@ -20,8 +20,8 @@
 </head>
 <body class="sb-nav-fixed">
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
-        <!-- Navbar Brand-->
-        <a class="navbar-brand ps-3" href="index.html">Set New Location</a>
+ <!-- Navbar Brand-->
+            <a class="navbar-brand ps-3" th:href="@{/admin/dash}"><img src="/assects/AeriesH.png" alt=""></a>
         <!-- Sidebar Toggle-->
         <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
         <!-- Navbar Search-->
@@ -57,7 +57,7 @@
                             <div class="sb-nav-link-icon"> <i class="fas fa-info-circle"></i></div>
                             Status
                         </a>
-                        <a class="nav-link" href="#" th:href="@{/admin/amap}" >
+                        <a class="nav-link select" href="#" th:href="@{/admin/amap}" >
                             <div class="sb-nav-link-icon"><i class="fas fa-map-marker-alt"></i></div>Set New Location                            
                             
                         </a>

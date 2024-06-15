@@ -1,0 +1,115 @@
+body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Open Sans', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: url('/assects/mission.jpg') no-repeat center center fixed;
+            background-size: cover;
+        }
+
+        .login-container {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 40px 30px;
+            border-radius: 10px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            width: 350px;
+            max-width: 90%;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .logo-placeholder {
+            margin-bottom: 20px;
+            font-size: 28px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .login-form h2 {
+            margin-bottom: 10px;
+            font-size: 24px;
+            color: #333;
+        }
+
+        .login-form p {
+            margin-bottom: 30px;
+            color: #666;
+        }
+
+        .input-group {
+            position: relative;
+            margin-bottom: 30px;
+            width: 100%;
+        }
+
+        .input-group input {
+            width: calc(100% - 30px);
+            padding: 15px;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+            outline: none;
+            background: transparent;
+            transition: all 0.3s ease;
+            font-size: 16px;
+        }
+
+        .input-group input:focus {
+            border-color: #397538;
+            box-shadow: 0 0 5px rgba(106, 17, 203, 0.5);
+        }
+
+        .input-group label {
+            position: absolute;
+            margin-left: -20px;
+            font-size: 14px !important;
+            top: 50%;
+            left: 15px;
+            transform: translateY(-50%);
+            background: white;
+            padding: 0 5px;
+            color: #aaa;
+            pointer-events: none;
+            transition: all 0.3s ease;
+            font-size: 16px;
+        }
+
+        .input-group input:focus + label,
+        .input-group input:not(:placeholder-shown) + label {
+            top: -10px;
+            left: 15px;
+            margin-left: -20px;
+            font-size: 16px;
+            color: #397538;
+            font-size: 12px;
+        }
+
+        button {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 5px;
+            background: #397538;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            margin-bottom: 20px;
+        }
+
+        button:hover {
+            background: #51ab4f;
+        }
+        
+img{
+    height: 50px;
+    width: 170px;
+    margin-left: 10px;
+}
