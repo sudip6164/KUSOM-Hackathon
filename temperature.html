@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temperature Details - Pollution Monitor</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="css/temperature.css">
+</head>
+<body>
+
+    <div class="navbar">
+        <div class="logo"><img src="assects/AeriesH.png" alt=""></div>
+        <div class="nav-links">
+            <a class="hover-underline-animation" href="index.html">Home</a>
+            <a class="hover-underline-animation" href="about.html">About</a>
+            <a class="hover-underline-animation" href="data.html">Data</a>
+            <a class="hover-underline-animation" href="map.html">Map</a>
+            <a class="hover-underline-animation" href="contact.html">Feedback</a>
+        </div>
+    </div>
+
+    <div class="topNab">
+        <ul>
+            <li><a class="hover-underline-animation" href="airdetails.html">Air Pollution</a></li>
+            <li><a class="hover-underline-animation" href="humidity.html">Humidity</a></li>
+            <li><a class="select" href="#">Temperature</a></li>
+        </ul>
+        <hr>
+    </div>
+    
+    <div class="content">
+        <div class="chart-container">
+            <canvas id="temperatureGauge"></canvas>
+            <div class="gauge-labels">
+                <span>0°C</span>
+                <span>50°C</span>
+                <span>100°C</span>
+            </div>
+        </div>
+
+        <div class="details">
+            <h1>Temperature Details</h1>
+            <p>Current Temperature: <span id="currentTemperature">30°C</span></p>
+            <h2>Detailed Information on Temperature Monitoring</h2>
+            <p>Monitoring temperature is crucial for understanding environmental conditions and climate patterns. Temperature variations can impact ecosystems, agriculture, and human health.</p>
+            <h2>Factors Affecting Temperature</h2>
+            <p>Factors influencing temperature include sunlight, altitude, latitude, and proximity to water bodies. Human activities, such as urbanization and industrialization, also contribute to local temperature changes.</p>
+            <h2>Impacts of Temperature Extremes</h2>
+            <p>Extreme temperatures, both hot and cold, can lead to heat-related illnesses, frostbite, crop failures, and disruptions in ecosystems. Monitoring and managing temperature fluctuations are essential for adaptation and resilience.</p>
+            <div class="solution" id="temperatureSolutionText">
+                <h2>Solution for Temperature Monitoring</h2>
+                Implementing climate-smart strategies, enhancing early warning systems, and promoting sustainable practices are crucial steps in managing temperature extremes and fostering resilience.
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2024 Pollution Monitor</p>
+    </div>
+
+    <script src="js/temperature.js"></script>
+
+</body>
+</html>
