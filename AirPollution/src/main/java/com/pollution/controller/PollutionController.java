@@ -1,5 +1,8 @@
 package com.pollution.controller;
 
+import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
+import java.util.List;
 import java.util.Optional;
 import java.util.OptionalDouble;
 
@@ -38,10 +41,35 @@ public class PollutionController {
 	}
 	
 	@GetMapping("/data")
-	public String dataPage()
-	{
-		return "data.html";
+	public String dataPage(Model model) {
+	    LocalDateTime endOfDay = LocalDateTime.now().truncatedTo(ChronoUnit.DAYS).plusDays(1);
+	    LocalDateTime startOfDay = endOfDay.minusDays(1);
+
+	    List<Sensor> sensors = sensorDataRepository.findByCreatedAtBetween(startOfDay, endOfDay);
+
+	    int averageTemperature = (int) sensors.stream()
+	                                             .mapToDouble(Sensor::getTemperature)
+	                                             .average()
+	                                             .orElse(0.0);
+
+	    int averageAqi = (int) sensors.stream()
+	                                      .mapToDouble(Sensor::getAqi)
+	                                      .average()
+	                                      .orElse(0.0);
+
+	    float averageHumidity = (float) sensors.stream()
+	                                           .mapToDouble(Sensor::getHumidity)
+	                                           .average()
+	                                           .orElse(0.0);
+
+	    model.addAttribute("averageTemperature", averageTemperature);
+	    model.addAttribute("averageAqi", averageAqi);
+	    model.addAttribute("averageHumidity", averageHumidity);
+
+	    return "data.html";
 	}
+
+
 	
 	@GetMapping("/map")
 	public String mapPage()
@@ -76,5 +104,7 @@ public class PollutionController {
         }
         return "temperature.html";
     }
+	
+
 	
 }

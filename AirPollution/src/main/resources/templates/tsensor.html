@@ -71,6 +71,21 @@ hr {
 .topNab ul li .select{
     color: #ff5722;
 }
+
+.content {
+    display: flex;
+    flex-direction: row;
+    padding: 40px 40px; 
+    justify-content: space-between;
+}
+.chart-container {
+    width: 400px;
+    margin-right: 20px;
+}
+.details {
+    text-align: justify;
+    max-width: 600px;
+}
     </style>
 </head>
 <body class="sb-nav-fixed">
@@ -146,30 +161,28 @@ hr {
                     <div class="chart-container">
                         <canvas id="pollutionGauge"></canvas>
                         <div class="gauge-labels">
-                            <span>0</span>
-                            <span>50</span>
-                            <span>100</span>
+                            <span>0°C</span>
+                           <span th:text="${temperature} +'°C'"></span>
+                            <span>100°C</span>
                         </div>
                     </div>
 
                     <div class="details">
                         <h1 id="locationTitle">Temperature Details</h1>
-                        <p id="currentAirQuality">Current Temperature:</p>
+                        <p id="currentAirQuality">Current Temperature: <span th:text="${temperature} +'°C'"></span> </p>
                         <!-- Additional details for each location -->
+                          <h2>Detailed Information on Temperature Monitoring</h2>
+            <p>Monitoring temperature is crucial for understanding environmental conditions and climate patterns. Temperature variations can impact ecosystems, agriculture, and human health.</p>
+            <h2>Factors Affecting Temperature</h2>
+            <p>Factors influencing temperature include sunlight, altitude, latitude, and proximity to water bodies. Human activities, such as urbanization and industrialization, also contribute to local temperature changes.</p>
+            <h2>Impacts of Temperature Extremes</h2>
+            <p>Extreme temperatures, both hot and cold, can lead to heat-related illnesses, frostbite, crop failures, and disruptions in ecosystems. Monitoring and managing temperature fluctuations are essential for adaptation and resilience.</p>
+            
                     </div>
                 </div>
                 
                 
-                <div class="dropdown" style="margin: 20px;">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="locationDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                        Select Location
-                    </button>
-                    <ul class="dropdown-menu" aria-labelledby="locationDropdown">
-                        <li><a class="dropdown-item" href="#" onclick="selectLocation('kathmandu')">Kathmandu Durbar Square</a></li>
-                        <li><a class="dropdown-item" href="#" onclick="selectLocation('patan')">Patan Durbar Square</a></li>
-                        <li><a class="dropdown-item" href="#" onclick="selectLocation('bhaktapur')">Bhaktapur Durbar Square</a></li>
-                    </ul>
-                </div>
+              
             </main>
             <footer class="py-4 bg-light mt-auto">
                 <div class="container-fluid px-4">
@@ -209,38 +222,10 @@ hr {
                 animation: { animateRotate: false, animateScale: true },
                 responsive: true,
                 maintainAspectRatio: false
-            }
+            },
+            
         });
 
-        // Function to update gauge and information based on selected location
-        function selectLocation(location) {
-            var locationTitle = document.getElementById('locationTitle');
-            var currentAirQuality = document.getElementById('currentAirQuality');
-
-            // Update title and details based on selected location
-            switch (location) {
-                case 'kathmandu':
-                    locationTitle.textContent = 'Kathmandu Air Pollution Details';
-                    currentAirQuality.textContent = 'Current Air Quality: Moderate';
-                    pollutionGauge.data.datasets[0].data = [30, 70]; // Example data for Kathmandu
-                    break;
-                case 'patan':
-                    locationTitle.textContent = 'Patan Air Pollution Details';
-                    currentAirQuality.textContent = 'Current Air Quality: Good';
-                    pollutionGauge.data.datasets[0].data = [10, 90]; // Example data for patan
-                    break;
-                case 'bhaktapur':
-                    locationTitle.textContent = 'Bhaktapur Air Pollution Details';
-                    currentAirQuality.textContent = 'Current Air Quality: Poor';
-                    pollutionGauge.data.datasets[0].data = [60, 40]; // Example data for bhaktapur
-                    break;
-                default:
-                    break;
-            }
-
-            // Update the gauge chart
-            pollutionGauge.update();
-        }
     </script>
 </body>
 </html>

@@ -71,6 +71,21 @@ hr {
 .topNab ul li .select{
     color: #ff5722;
 }
+
+.content {
+    display: flex;
+    flex-direction: row;
+    padding: 40px 40px; 
+    justify-content: space-between;
+}
+.chart-container {
+    width: 400px;
+    margin-right: 20px;
+}
+.details {
+    text-align: justify;
+    max-width: 600px;
+}
     </style>
 </head>
 <body class="sb-nav-fixed">
@@ -146,32 +161,29 @@ hr {
                     <div class="chart-container">
                         <canvas id="pollutionGauge"></canvas>
                         <div class="gauge-labels">
-                            <span>0</span>
-                            <span>50</span>
-                            <span>100</span>
+                            <span>0 AQI</span>
+                            <span th:text="${aqi}+' AQI'"></span>
+                            <span>100 AQI</span>
                         </div>
                     </div>
 
                     <div class="details">
                         <h1 id="locationTitle">Air Pollution Details</h1>
                         <p id="currentAirQuality">Current Air Quality:</p>
-                        <p id="#">Current AQI:</p>
-                        <p id="#">Ppm:</p>
+                        <p id="#">Current AQI (Air Quality Index): <span th:text="${aqi}+' AQI'"></span> </p>
+                        <p id="#">PPM (Parts Per Million): <span th:text = "${gasPPM}+' PPM'"></span></p>
                         <!-- Additional details for each location -->
+                         <h2>Detailed Information on Air Pollution</h2>
+            <p>Air pollution is a major environmental risk to health. Understanding air pollution levels and trends can help us to mitigate the negative health impacts and improve air quality.</p>
+            <h2>What Contributes to Air Pollution?</h2>
+            <p>Various factors contribute to air pollution, including industrial emissions, vehicle exhaust, and natural sources such as wildfires and volcanic activity. The main pollutants include particulate matter (PM2.5 and PM10), nitrogen dioxide (NO2), sulfur dioxide (SO2), carbon monoxide (CO), and ozone (O3).</p>
+            <h2>Health Impacts of Air Pollution</h2>
+            <p>Exposure to air pollution can lead to respiratory and cardiovascular diseases, adverse pregnancy outcomes, and even premature death. Long-term exposure can result in chronic health issues and reduced life expectancy.</p>
+            
                     </div>
                 </div>
                 
                 
-                <div class="dropdown" style="margin: 20px;">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="locationDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                        Select Location
-                    </button>
-                    <ul class="dropdown-menu" aria-labelledby="locationDropdown">
-                        <li><a class="dropdown-item" href="#" onclick="selectLocation('kathmandu')">Kathmandu Durbar Square</a></li>
-                        <li><a class="dropdown-item" href="#" onclick="selectLocation('patan')">Patan Durbar Square</a></li>
-                        <li><a class="dropdown-item" href="#" onclick="selectLocation('bhaktapur')">Bhaktapur Durbar Square</a></li>
-                    </ul>
-                </div>
             </main>
             <footer class="py-4 bg-light mt-auto">
                 <div class="container-fluid px-4">
@@ -213,36 +225,6 @@ hr {
                 maintainAspectRatio: false
             }
         });
-
-        // Function to update gauge and information based on selected location
-        function selectLocation(location) {
-            var locationTitle = document.getElementById('locationTitle');
-            var currentAirQuality = document.getElementById('currentAirQuality');
-
-            // Update title and details based on selected location
-            switch (location) {
-                case 'kathmandu':
-                    locationTitle.textContent = 'Kathmandu Air Pollution Details';
-                    currentAirQuality.textContent = 'Current Air Quality: Moderate';
-                    pollutionGauge.data.datasets[0].data = [30, 70]; // Example data for Kathmandu
-                    break;
-                case 'patan':
-                    locationTitle.textContent = 'Patan Air Pollution Details';
-                    currentAirQuality.textContent = 'Current Air Quality: Good';
-                    pollutionGauge.data.datasets[0].data = [10, 90]; // Example data for patan
-                    break;
-                case 'bhaktapur':
-                    locationTitle.textContent = 'Bhaktapur Air Pollution Details';
-                    currentAirQuality.textContent = 'Current Air Quality: Poor';
-                    pollutionGauge.data.datasets[0].data = [60, 40]; // Example data for bhaktapur
-                    break;
-                default:
-                    break;
-            }
-
-            // Update the gauge chart
-            pollutionGauge.update();
-        }
     </script>
 </body>
 </html>

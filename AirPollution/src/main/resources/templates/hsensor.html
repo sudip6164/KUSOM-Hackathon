@@ -71,6 +71,21 @@ hr {
 .topNab ul li .select{
     color: #ff5722;
 }
+
+.content {
+    display: flex;
+    flex-direction: row;
+    padding: 40px 40px; 
+    justify-content: space-between;
+}
+.chart-container {
+    width: 400px;
+    margin-right: 20px;
+}
+.details {
+    text-align: justify;
+    max-width: 600px;
+}
     </style>
 </head>
 <body class="sb-nav-fixed">
@@ -148,30 +163,28 @@ hr {
                         <canvas id="pollutionGauge"></canvas>
                         <div class="gauge-labels">
                             <span>0</span>
-                            <span>50</span>
-                            <span>100</span>
+                            <span th:text="${humidity} +'%'"></span>
+                            <span>100%</span>
                         </div>
                     </div>
 
                     <div class="details">
                         <h1 id="locationTitle">Humidity Details</h1>
-                        <p id="humidityq">Humidity:</p>
+                        <p id="humidityq">Humidity: <span th:text ="${humidity} +'%'">></span></p>
                         <table></table>
                         <!-- Additional details for each location -->
+                        <h2>Detailed Information on Sound Pollution</h2>
+            <p>Sound pollution, or noise pollution, can have detrimental effects on health and well-being. It can lead to stress, sleep disturbances, and other health issues.</p>
+            <h2>What Contributes to Sound Pollution?</h2>
+            <p>Various sources contribute to sound pollution, including traffic noise, industrial activities, construction sites, and noisy equipment.</p>
+            <h2>Health Impacts of Sound Pollution</h2>
+            <p>Long-term exposure to high levels of noise can result in hearing loss and other auditory problems. It can also contribute to cardiovascular diseases and psychological issues.</p>
+            
                     </div>
                 </div>
                 
                 
-                <div class="dropdown" style="margin: 20px;">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="locationDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                        Select Location
-                    </button>
-                    <ul class="dropdown-menu" aria-labelledby="locationDropdown">
-                        <li><a class="dropdown-item" href="#" onclick="selectLocation('kathmandu')">Kathmandu Durbar Square</a></li>
-                        <li><a class="dropdown-item" href="#" onclick="selectLocation('patan')">Patan Durbar Square</a></li>
-                        <li><a class="dropdown-item" href="#" onclick="selectLocation('bhaktapur')">Bhaktapur Durbar Square</a></li>
-                    </ul>
-                </div>
+                
             </main>
             <footer class="py-4 bg-light mt-auto">
                 <div class="container-fluid px-4">
@@ -214,35 +227,6 @@ hr {
             }
         });
 
-        // Function to update gauge and information based on selected location
-        function selectLocation(location) {
-            var locationTitle = document.getElementById('locationTitle');
-            var currentAirQuality = document.getElementById('currentAirQuality');
-
-            // Update title and details based on selected location
-            switch (location) {
-                case 'kathmandu':
-                    locationTitle.textContent = 'Kathmandu Humidity Details';
-                    humidityq.textContent = 'Placeholder';
-                    pollutionGauge.data.datasets[0].data = [30, 70]; // Example data for Kathmandu
-                    break;
-                case 'patan':
-                    locationTitle.textContent = 'Patan Air Pollution Details';
-                    humidityq.textContent = 'Placeholder';
-                    pollutionGauge.data.datasets[0].data = [10, 90]; // Example data for patan
-                    break;
-                case 'bhaktapur':
-                    locationTitle.textContent = 'Bhaktapur Air Pollution Details';
-                    humidityq.textContent = 'Placeholder';
-                    pollutionGauge.data.datasets[0].data = [60, 40]; // Example data for bhaktapur
-                    break;
-                default:
-                    break;
-            }
-
-            // Update the gauge chart
-            pollutionGauge.update();
-        }
     </script>
 </body>
 </html>
