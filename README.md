@@ -1,7 +1,7 @@
 # KUSOM-Hackathon
 ## Used Technology:
 1. Eclipse IDE or SpringToolSuite (Java Springboot framework)
-2. Xampp app (MYSql database)
+2. Xampp application (MYSql database)
 3. Arduino IDE (For Iot code)
 
 ## Iot Components Used:
