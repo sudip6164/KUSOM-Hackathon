@@ -1,23 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pollution Monitor - Data</title>
     <link rel="stylesheet" href="css/data.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+
+    <!-- fontawesome -->
+    <script src="https://kit.fontawesome.com/9dd5e210d1.js" crossorigin="anonymous"></script>
 </head>
 <body>
-  <div class="header">
-    <div class="logo"><img src="assects/AeriesH.png" alt=""></div>
-    <div class="nav-links">
-        <a class="hover-underline-animation" href="/">Home</a>
-        <a class="hover-underline-animation" href="/about">About</a>
-        <a class="select" href="/data">Data</a>
-        <a class="hover-underline-animation" href="/map">Map</a>
-        <a class="hover-underline-animation" href="/contact">Feedback</a>
+    <div class="header">
+        <div class="logo"><img src="assets/AeriesH.png" alt=""></div>
+        <div class="nav-links">
+            <a class="hover-underline-animation" href="/">Home</a>
+            <a class="hover-underline-animation" href="/about">About</a>
+            <a class="select" href="/data">Data</a>
+            <a class="hover-underline-animation" href="/map">Map</a>
+            <a class="hover-underline-animation" href="/contact">Feedback</a>
+        </div>
     </div>
-</div>
 
     <div class="hero data-hero">
         <div class="hero-content">
@@ -25,108 +29,106 @@
             <p>Comprehensive Data to Help You Understand Air Quality</p>
         </div>
     </div>
-    
+
     <div class="search">
-      <div class="search-container">
-        <form action="">
-          <input type="text" placeholder="Search.." name="search">
-          <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
-        </form>
-      </div>
+        <div class="search-container">
+            <form action="">
+                <input type="text" placeholder="Search.." name="search">
+                <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+            </form>
+        </div>
     </div>
-    
 
     <div class="section">
         <h2>Data Overview</h2>
-        <p>We provide various types of pollution data including Average Pollution rate, key pollutants and it's solutions. </p>
+        <p>We provide various types of pollution data including Average Pollution rate, key pollutants and its solutions.</p>
         
-       <div class="graph">
-         <!-- sppedmeter 1 -->
-         <a href="/airdetails">
-          <div class="speedmeter">
-            <div class="gauge-wrapper">
-                <div class="gauge four rischio1">
-                  <div class="slice-colors">
-                    <div class="st slice-item"></div>
-                    <div class="st slice-item"></div>
-                    <div class="st slice-item"></div>
-                    <div class="st slice-item"></div>
-                  </div>
-                  <div class="needle"></div>
-                  <div class="gauge-center">
-                    <div class="label">RISK</div>
-                    <div class="number">LOW</div>
-                  </div>    
+        <div class="graph">
+            <!-- speedometer 1 -->
+            <a href="/airdetails">
+                <div class="speedmeter">
+                    <div class="gauge-wrapper">
+                        <div class="gauge four rischio2">
+                            <div class="slice-colors">
+                                <div class="st slice-item"></div>
+                                <div class="st slice-item"></div>
+                                <div class="st slice-item"></div>
+                                <div class="st slice-item"></div>
+                            </div>
+                            <div class="needle"></div>
+                            <div class="gauge-center">
+                                <div class="label">RISK</div>
+                                <div class="number">MEDIUM</div>
+                            </div>    
+                        </div>
+                    </div>
+                    <div class="title">
+                        <h3>Pollution</h3>
+                    </div>
                 </div>
-              </div>
-              <div class="title">
-                <h3>Pollution</h3>
-              </div>
-        </div>
-         </a>
+            </a>
 
-          <!-- sppedmeter 2 -->
-        <a href="/humidity">
-          <div class="speedmeter">
-            <div class="gauge-wrapper">
-                <div class="gauge four rischio3">
-                  <div class="slice-colors">
-                    <div class="st slice-item"></div>
-                    <div class="st slice-item"></div>
-                    <div class="st slice-item"></div>
-                    <div class="st slice-item"></div>
-                  </div>
-                  <div class="needle"></div>
-                  <div class="gauge-center">
-                    <div class="label">RISK</div>
-                    <div class="number">HIGH</div>
-                  </div>    
+            <!-- speedometer 2 -->
+            <a href="/humidity">
+                <div class="speedmeter">
+                    <div class="gauge-wrapper">
+                        <div class="gauge four rischio1">
+                            <div class="slice-colors">
+                                <div class="st slice-item"></div>
+                                <div class="st slice-item"></div>
+                                <div class="st slice-item"></div>
+                                <div class="st slice-item"></div>
+                            </div>
+                            <div class="needle"></div>
+                            <div class="gauge-center">
+                                <div class="label">RISK</div>
+                                <div class="number">LOW</div>
+                            </div>    
+                        </div>
+                    </div>
+                    <div class="title">
+                        <h3>Humidity</h3>
+                    </div>
                 </div>
-              </div>
-              <div class="title">
-                <h3>Humidity</h3>
-              </div>
-        </div>
-        </a>
+            </a>
 
-          <!-- sppedmeter 3 -->
-       <a href="/temperature">
-        <div class="speedmeter">
-          <div class="gauge-wrapper">
-              <div class="gauge four rischio4">
-                <div class="slice-colors">
-                  <div class="st slice-item"></div>
-                  <div class="st slice-item"></div>
-                  <div class="st slice-item"></div>
-                  <div class="st slice-item"></div>
+            <!-- speedometer 3 -->
+            <a href="/temperature">
+                <div class="speedmeter">
+                    <div class="gauge-wrapper">
+                        <div class="gauge four rischio2">
+                            <div class="slice-colors">
+                                <div class="st slice-item"></div>
+                                <div class="st slice-item"></div>
+                                <div class="st slice-item"></div>
+                                <div class="st slice-item"></div>
+                            </div>
+                            <div class="needle"></div>
+                            <div class="gauge-center">
+                                <div class="label">RISK</div>
+                                <div class="number">MEDIUM</div>
+                            </div>    
+                        </div>
+                    </div>
+                    <div class="title">
+                        <h3>Temperature</h3>
+                    </div>
                 </div>
-                <div class="needle"></div>
-                <div class="gauge-center">
-                  <div class="label">RISK</div>
-                  <div class="number">EXTREME</div>
-                </div>    
-              </div>
-            </div>
+            </a>
+        </div>
+
+        <!-- Line Chart -->
+        <div class="line">
             <div class="title">
-              <h3>Temperature</h3>
+                <h1>Chart</h1>
             </div>
-         </div>
-         </div>
-       </a>
-       </div>
-
-       <!-- Line Chart -->
-       <div class="line">
-        <div class="title">
-            <h1>Chart</h1>
+            <div class="chart">
+                <canvas id="sensorChart" width="525" height="200"></canvas>
+            </div>
         </div>
-        <div class="chart">
-            <canvas id="myChart" style="width:100%;max-width:900px"></canvas>
-        </div>
-      </div>
+    </div>
 
-
-      <div class="footer">
+    <div class="footer">
         <p>&copy; 2024 Pollution Monitor. All rights reserved.</p>
         <a href="#">About Us</a>
         <a href="#">Privacy Policy</a>
@@ -134,9 +136,52 @@
         <a href="#">Contact</a>
     </div>
 
-    <script src="js/data.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"> </script>
-    <!-- fontawesome -->
-    <script src="https://kit.fontawesome.com/9dd5e210d1.js" crossorigin="anonymous"></script>
+    <script th:inline="javascript">
+    /*<![CDATA[*/
+    document.addEventListener('DOMContentLoaded', function() {
+        var ctx = document.getElementById('sensorChart').getContext('2d');
+        var averageTemperature = /*[[${averageTemperature}]]*/ 0;
+        var averageAqi = /*[[${averageAqi}]]*/ 0;
+        var averageHumidity = /*[[${averageHumidity}]]*/ 0.0;
+
+        var sensorChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['','Temperature', 'AQI', 'Humidity'], 
+                datasets: [{
+                    label: 'Average Values',
+                    data: [
+                    	10,
+                        /* averageTemperature */30,
+                        /* averageAqi */101,
+                        /*parseFloat(averageHumidity).toFixed(2)*/46
+                    ],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.5)',    // Red for Temperature
+                        'rgba(54, 162, 235, 0.5)',    // Blue for AQI
+                        'rgba(255, 206, 86, 0.5)'     // Yellow for Humidity
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: false,
+                        min: 10 // Start y-axis at 10
+                    }
+                }
+            }
+        });
+    });
+    /*]]>*/
+        /*]]>*/
+    </script>
+
 </body>
 </html>

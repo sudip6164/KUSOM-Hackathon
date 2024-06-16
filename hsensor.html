@@ -12,10 +12,10 @@
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
-      .content {
+.content {
             display: flex;
             flex-direction: row;
-            padding: 40px 100px; 
+            padding: 40px 100px;
             justify-content: space-between;
             align-items: flex-start; /* Align items flex-start for better alignment */
         }
@@ -55,12 +55,12 @@
     font-size: 16px;
     margin: 0px 100px 0px 100px;
 }
-
+ 
 .topNab ul li a:hover{
     color: #397538;
 }
-
-
+ 
+ 
 .hover-underline-animation {
     display: inline-block;
     position: relative;
@@ -79,7 +79,7 @@
     transform-origin: bottom right;
     transition: transform 0.25s ease-out;
 }
-
+ 
 .hover-underline-animation:hover::after {
     transform: scaleX(1);
     transform-origin: bottom left;
@@ -103,8 +103,8 @@ hr {
 </head>
 <body class="sb-nav-fixed">
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
-        <!-- Navbar Brand-->
-        <a class="navbar-brand ps-3" th:href="@{/admin/dash}"><img src="/assects/AeriesH.png" alt=""></a>
+ <!-- Navbar Brand-->
+            <a class="navbar-brand ps-3" th:href="@{/admin/dash}"><img src="/assects/AeriesH.png" alt=""></a>
         <!-- Sidebar Toggle-->
         <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
         <!-- Navbar Search-->
@@ -130,7 +130,7 @@ hr {
                 <div class="sb-sidenav-menu">
                     <div class="nav">
                         <div class="sb-sidenav-menu-heading">Core</div>
-                        <a class="nav-link" th:href="@{/admin/dash}" href="#">
+                        <a class="nav-link" th:href="@{/admin}" href="#">
                             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                             Dashboard
                         </a>
@@ -176,30 +176,28 @@ hr {
                         <canvas id="pollutionGauge"></canvas>
                         <div class="gauge-labels">
                             <span>0</span>
-                            <span>50</span>
-                            <span>100</span>
+                            <span th:text="${humidity} +'%'"></span>
+                            <span>100%</span>
                         </div>
                     </div>
 
                     <div class="details">
                         <h1 id="locationTitle">Humidity Details</h1>
-                        <p id="humidityq">Humidity:</p>
+                        <p id="humidityq">Humidity: <span th:text ="${humidity} +'%'">></span></p>
                         <table></table>
                         <!-- Additional details for each location -->
+                        <h2>Detailed Information on Humidity</h2>
+            <p>Humidity refers to the concentration of water vapor present in the air. It can significantly affect comfort, health, and even the structural integrity of buildings.</p>
+            <h2>What Contributes to Humidity?</h2>
+            <p>Various factors contribute to humidity levels, including weather conditions, geographic location, and indoor activities such as cooking, bathing, and using humidifiers.</p>
+            <h2>Health Impacts of Humidity</h2>
+            <p>High humidity levels can promote the growth of mold, mildew, and dust mites, which can exacerbate allergies and respiratory conditions. Conversely, low humidity can cause dry skin, irritated respiratory tracts, and increase the spread of airborne viruses.</p>
+            
                     </div>
                 </div>
                 
                 
-                <div class="dropdown" style="margin: 20px;">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="locationDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                        Select Location
-                    </button>
-                    <ul class="dropdown-menu" aria-labelledby="locationDropdown">
-                        <li><a class="dropdown-item" href="#" onclick="selectLocation('kathmandu')">Kathmandu Durbar Square</a></li>
-                        <li><a class="dropdown-item" href="#" onclick="selectLocation('patan')">Patan Durbar Square</a></li>
-                        <li><a class="dropdown-item" href="#" onclick="selectLocation('bhaktapur')">Bhaktapur Durbar Square</a></li>
-                    </ul>
-                </div>
+                
             </main>
             <footer class="py-4 bg-light mt-auto">
                 <div class="container-fluid px-4">
@@ -215,9 +213,9 @@ hr {
             </footer>
         </div>
     </div>
-    <script th:src="@{/js/scripts.js}"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+    <script th:src="@{/js/script.js}"></script>
     <script>
         // Chart.js configuration for gauge
         var ctx = document.getElementById('pollutionGauge').getContext('2d');
@@ -243,35 +241,6 @@ hr {
             }
         });
 
-        // Function to update gauge and information based on selected location
-        function selectLocation(location) {
-            var locationTitle = document.getElementById('locationTitle');
-            var currentAirQuality = document.getElementById('currentAirQuality');
-
-            // Update title and details based on selected location
-            switch (location) {
-                case 'kathmandu':
-                    locationTitle.textContent = 'Kathmandu Humidity Details';
-                    humidityq.textContent = 'Placeholder';
-                    pollutionGauge.data.datasets[0].data = [30, 70]; // Example data for Kathmandu
-                    break;
-                case 'patan':
-                    locationTitle.textContent = 'Patan Air Pollution Details';
-                    humidityq.textContent = 'Placeholder';
-                    pollutionGauge.data.datasets[0].data = [10, 90]; // Example data for patan
-                    break;
-                case 'bhaktapur':
-                    locationTitle.textContent = 'Bhaktapur Air Pollution Details';
-                    humidityq.textContent = 'Placeholder';
-                    pollutionGauge.data.datasets[0].data = [60, 40]; // Example data for bhaktapur
-                    break;
-                default:
-                    break;
-            }
-
-            // Update the gauge chart
-            pollutionGauge.update();
-        }
     </script>
 </body>
 </html>

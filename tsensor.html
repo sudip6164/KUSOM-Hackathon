@@ -12,10 +12,10 @@
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
-         .content {
+  .content {
             display: flex;
             flex-direction: row;
-            padding: 40px 100px; 
+            padding: 40px 100px;
             justify-content: space-between;
             align-items: flex-start; /* Align items flex-start for better alignment */
         }
@@ -55,12 +55,12 @@
     font-size: 16px;
     margin: 0px 100px 0px 100px;
 }
-
+ 
 .topNab ul li a:hover{
     color: #397538;
 }
-
-
+ 
+ 
 .hover-underline-animation {
     display: inline-block;
     position: relative;
@@ -79,7 +79,7 @@
     transform-origin: bottom right;
     transition: transform 0.25s ease-out;
 }
-
+ 
 .hover-underline-animation:hover::after {
     transform: scaleX(1);
     transform-origin: bottom left;
@@ -104,7 +104,8 @@ hr {
 <body class="sb-nav-fixed">
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
         <!-- Navbar Brand-->
-        <a class="navbar-brand ps-3" th:href="@{/admin}"><img src="/assects/AeriesH.png" alt=""></a>
+ <a class="navbar-brand ps-3" th:href="@{/admin/dash}"><img src="/assects/AeriesH.png" alt=""></a>
+        <!-- Sidebar Toggle-->
         <!-- Sidebar Toggle-->
         <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
         <!-- Navbar Search-->
@@ -130,7 +131,7 @@ hr {
                 <div class="sb-sidenav-menu">
                     <div class="nav">
                         <div class="sb-sidenav-menu-heading">Core</div>
-                        <a class="nav-link" th:href="@{/admin/dash}" href="#">
+                        <a class="nav-link" th:href="@{/admin}" href="#">
                             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                             Dashboard
                         </a>
@@ -174,30 +175,28 @@ hr {
                     <div class="chart-container">
                         <canvas id="pollutionGauge"></canvas>
                         <div class="gauge-labels">
-                            <span>0</span>
-                            <span>50</span>
-                            <span>100</span>
+                            <span>0°C</span>
+                           <span th:text="${temperature} +'°C'"></span>
+                            <span>100°C</span>
                         </div>
                     </div>
 
                     <div class="details">
                         <h1 id="locationTitle">Temperature Details</h1>
-                        <p id="currentAirQuality">Current Temperature:</p>
+                        <p id="currentAirQuality">Current Temperature: <span th:text="${temperature} +'°C'"></span> </p>
                         <!-- Additional details for each location -->
+                          <h2>Detailed Information on Temperature Monitoring</h2>
+            <p>Monitoring temperature is crucial for understanding environmental conditions and climate patterns. Temperature variations can impact ecosystems, agriculture, and human health.</p>
+            <h2>Factors Affecting Temperature</h2>
+            <p>Factors influencing temperature include sunlight, altitude, latitude, and proximity to water bodies. Human activities, such as urbanization and industrialization, also contribute to local temperature changes.</p>
+            <h2>Impacts of Temperature Extremes</h2>
+            <p>Extreme temperatures, both hot and cold, can lead to heat-related illnesses, frostbite, crop failures, and disruptions in ecosystems. Monitoring and managing temperature fluctuations are essential for adaptation and resilience.</p>
+            
                     </div>
                 </div>
                 
                 
-                <div class="dropdown" style="margin: 20px;">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="locationDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                        Select Location
-                    </button>
-                    <ul class="dropdown-menu" aria-labelledby="locationDropdown">
-                        <li><a class="dropdown-item" href="#" onclick="selectLocation('kathmandu')">Kathmandu Durbar Square</a></li>
-                        <li><a class="dropdown-item" href="#" onclick="selectLocation('patan')">Patan Durbar Square</a></li>
-                        <li><a class="dropdown-item" href="#" onclick="selectLocation('bhaktapur')">Bhaktapur Durbar Square</a></li>
-                    </ul>
-                </div>
+              
             </main>
             <footer class="py-4 bg-light mt-auto">
                 <div class="container-fluid px-4">
@@ -213,9 +212,9 @@ hr {
             </footer>
         </div>
     </div>
-    <script th:src="@{/js/scripts.js}"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+    <script th:src="@{/js/script.js}"></script>
     <script>
         // Chart.js configuration for gauge
         var ctx = document.getElementById('pollutionGauge').getContext('2d');
@@ -238,38 +237,10 @@ hr {
                 animation: { animateRotate: false, animateScale: true },
                 responsive: true,
                 maintainAspectRatio: false
-            }
+            },
+            
         });
 
-        // Function to update gauge and information based on selected location
-        function selectLocation(location) {
-            var locationTitle = document.getElementById('locationTitle');
-            var currentAirQuality = document.getElementById('currentAirQuality');
-
-            // Update title and details based on selected location
-            switch (location) {
-                case 'kathmandu':
-                    locationTitle.textContent = 'Kathmandu Air Pollution Details';
-                    currentAirQuality.textContent = 'Current Air Quality: Moderate';
-                    pollutionGauge.data.datasets[0].data = [30, 70]; // Example data for Kathmandu
-                    break;
-                case 'patan':
-                    locationTitle.textContent = 'Patan Air Pollution Details';
-                    currentAirQuality.textContent = 'Current Air Quality: Good';
-                    pollutionGauge.data.datasets[0].data = [10, 90]; // Example data for patan
-                    break;
-                case 'bhaktapur':
-                    locationTitle.textContent = 'Bhaktapur Air Pollution Details';
-                    currentAirQuality.textContent = 'Current Air Quality: Poor';
-                    pollutionGauge.data.datasets[0].data = [60, 40]; // Example data for bhaktapur
-                    break;
-                default:
-                    break;
-            }
-
-            // Update the gauge chart
-            pollutionGauge.update();
-        }
     </script>
 </body>
 </html>

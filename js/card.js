@@ -1,9 +1,9 @@
 var spanElement = document.getElementById('counter');
 
 // Retrieve the current value and parse it as an integer (assuming it represents a percentage)
-var targetPercentage = parseInt(spanElement.textContent.trim()); // Get the target percentage
+var targetPercentage = parseFloat(spanElement.textContent.trim()); // Get the target percentage
 
-var speed = 10; // Adjust this value to control the speed (in milliseconds)
+var speed = 1; // Adjust this value to control the speed (in milliseconds)
 
 var counts = setInterval(updated, speed); // Adjust the speed here
 
@@ -11,11 +11,12 @@ var currentPercentage = 0;
 
 function updated() {
     let count = document.getElementById("counter");
-    count.innerHTML = currentPercentage + "%";
-    currentPercentage++;
+    count.innerHTML = currentPercentage.toFixed(1) + " AQI";
+    currentPercentage+=0.1;
 
     if (currentPercentage > targetPercentage) {
         clearInterval(counts);
+        count.innerHTML = currentPercentage.toFixed(1) + " AQI";
     }
 }
 
