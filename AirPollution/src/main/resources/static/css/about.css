@@ -61,6 +61,7 @@ body {
     background: url('../assects/mission.jpg') no-repeat center center/cover;
     color: #333;
     text-align: center;
+    justify-content: center;
     padding: 100px 20px;
 }
 .hero::before {
@@ -86,6 +87,7 @@ body {
 .section {
     padding: 60px 0px 60px 0px;
     text-align: center;
+    justify-content: center;
     display: flex;
     flex-direction: row;
 }

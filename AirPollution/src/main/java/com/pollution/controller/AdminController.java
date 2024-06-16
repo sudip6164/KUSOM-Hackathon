@@ -27,12 +27,7 @@ public class AdminController {
 	{
 		return "login.html";
 	}
-	@GetMapping("/AQI")
-	public String AQI()
-	{
-		return "AQI.html";
-	}
-	
+
 	@GetMapping("/admin")
 	public String adminPage()
 	{
@@ -88,6 +83,10 @@ public class AdminController {
 	        model.addAttribute("contact", contactRepository.findAll());
 	        return "afeed.html";
 	    }
-	 
+	 @GetMapping("/logout")
+		public String logout()
+		{
+			return "login.html";
+		}
 
 }

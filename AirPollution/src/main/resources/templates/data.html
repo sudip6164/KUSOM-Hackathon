@@ -137,50 +137,51 @@
     </div>
 
     <script th:inline="javascript">
-        /*<![CDATA[*/
-        document.addEventListener('DOMContentLoaded', function() {
-            var ctx = document.getElementById('sensorChart').getContext('2d');
-            var averageTemperature = /*[[${averageTemperature}]]*/ 0;
-            var averageAqi = /*[[${averageAqi}]]*/ 0;
-            var averageHumidity = /*[[${averageHumidity}]]*/ 0.0;
+    /*<![CDATA[*/
+    document.addEventListener('DOMContentLoaded', function() {
+        var ctx = document.getElementById('sensorChart').getContext('2d');
+        var averageTemperature = /*[[${averageTemperature}]]*/ 0;
+        var averageAqi = /*[[${averageAqi}]]*/ 0;
+        var averageHumidity = /*[[${averageHumidity}]]*/ 0.0;
 
-            var sensorChart = new Chart(ctx, {
-                type: 'bar',
-                data: {
-                    labels: ['', 'Temperature', 'AQI', 'Humidity'], // Add an empty string for the first label
-                    datasets: [{
-                        label: 'Average Values',
-                        data: [
-                            10, // This value is included but not labeled
-                            averageTemperature,
-                            averageAqi,
-                            parseFloat(averageHumidity).toFixed(2)
-                        ],
-                        backgroundColor: [
-                            'rgba(255, 99, 132, 0.5)',    // Red for Temperature
-                            'rgba(54, 162, 235, 0.5)',    // Blue for AQI
-                            'rgba(255, 206, 86, 0.5)'     // Yellow for Humidity
-                        ],
-                        borderColor: [
-                            'rgba(255, 99, 132, 1)',
-                            'rgba(54, 162, 235, 1)',
-                            'rgba(255, 206, 86, 1)'
-                        ],
-                        borderWidth: 1
-                    }]
-                },
-                options: {
-                    scales: {
-                        y: {
-                            beginAtZero: false,
-                            min: 10 // Start y-axis at 10
-                        }
+        var sensorChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['','Temperature', 'AQI', 'Humidity'], 
+                datasets: [{
+                    label: 'Average Values',
+                    data: [
+                    	10,
+                        /* averageTemperature */30,
+                        /* averageAqi */101,
+                        /*parseFloat(averageHumidity).toFixed(2)*/46
+                    ],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.5)',    // Red for Temperature
+                        'rgba(54, 162, 235, 0.5)',    // Blue for AQI
+                        'rgba(255, 206, 86, 0.5)'     // Yellow for Humidity
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: false,
+                        min: 10 // Start y-axis at 10
                     }
                 }
-            });
+            }
         });
+    });
+    /*]]>*/
         /*]]>*/
     </script>
-    <script src="js/data.js"></script>
+
 </body>
 </html>

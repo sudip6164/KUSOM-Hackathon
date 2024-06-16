@@ -555,9 +555,10 @@ progress {
 }
 
 .display-6 {
-  font-size: calc(0.175rem + 1.5vw);
+  font-size: calc(0.175rem + 1.5vw) !important;
   font-weight: 300;
   line-height: 1.2;
+  margin-top: -20px;
 }
 @media (min-width: 1200px) {
   .display-6 {
@@ -7633,6 +7634,8 @@ textarea.form-control-lg {
 
 .mt-4 {
   margin-top: 1.5rem !important;
+  margin-bottom: 30px;
+  color: #397538;
 }
 
 .mt-5 {
@@ -11295,4 +11298,7 @@ body {
     height: 300px;
     width: 400px;
     margin: 0px 60px 0px 0px;
+}
+.details{
+	margin-left: 60px;
 }
